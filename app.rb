@@ -20,7 +20,7 @@ class App < Sinatra::Base
 
   get '/set' do
     # set the :foo key of the session hash equal to 'hello' here!
-    if session[:foo] == 'hello'
+    if session[:foo] = 'hello'
       redirect '/fetch'
     else
       "Session value has not been set!"
@@ -37,10 +37,8 @@ class App < Sinatra::Base
 
   get '/set_session' do
     #set session id here
-    
-    session[:id] == "hello"
 
-    if session[:id] == 1
+    if session[:id] = 1
       # "Session ID set. It's currently set to #{session[:id]}."
       redirect '/fetch_session_id'
     else
@@ -53,6 +51,7 @@ class App < Sinatra::Base
   end
 
   get '/logout' do
+    session[:id].clear
     #clear session hash here
     "Session has now been cleared. session content: #{session.inspect}. Continue on to the '/finish' line!"
   end
